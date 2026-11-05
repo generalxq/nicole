@@ -1,0 +1,620 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Divine Visions College</title>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#1a4b8c',
+                            navyDark: '#0f315d',
+                            navyLight: '#2563eb',
+                            gold: '#d4af37',
+                            goldHover: '#b89428',
+                            goldLight: '#fef3c7',
+                            slate: '#0f172a',
+                            muted: '#475569',
+                            bgLight: '#f8fafc',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.08)',
+                        'card-hover': '0 20px 35px -10px rgba(26, 75, 140, 0.15)',
+                        'glow': '0 0 25px rgba(212, 175, 55, 0.35)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Modern Glassmorphism & Custom Polish */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(15, 49, 93, 0.92) 0%, rgba(26, 75, 140, 0.85) 60%, rgba(15, 23, 42, 0.95) 100%), 
+                        url('images/seniorstaff.jpg') center/cover no-repeat;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fef08a 0%, #d4af37 50%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-badge-bg {
+            background: linear-gradient(135deg, #d4af37 0%, #b89428 100%);
+        }
+
+        /* Pulse Animation for Floating WhatsApp */
+        @keyframes subtle-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 14px rgba(34, 197, 94, 0); }
+        }
+        
+        .pulse-whatsapp {
+            animation: subtle-pulse 2.5s infinite;
+        }
+
+        /* Input Ring Focus Effects */
+        .form-input-focus:focus-within {
+            border-color: #d4af37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-brand-bgLight font-sans text-brand-muted antialiased selection:bg-brand-gold selection:text-white flex flex-col min-h-screen">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <img src="./media/schoollogo.png" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/180x60/1a4b8c/ffffff?text=Divine+Visions+College';" 
+                         alt="Divine Visions Logo" 
+                         class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+                    <a href="index.html" class="px-3 py-2 rounded-full text-sm font-semibold text-brand-slate hover:text-brand-navy hover:bg-slate-100 transition">Home</a>
+                    <a href="preschool.html" class="px-3 py-2 rounded-full text-sm font-semibold text-brand-slate hover:text-brand-navy hover:bg-slate-100 transition">Pre-School</a>
+                    <a href="junior.html" class="px-3 py-2 rounded-full text-sm font-semibold text-brand-slate hover:text-brand-navy hover:bg-slate-100 transition">Junior School</a>
+                    <a href="senior.html" class="px-3 py-2 rounded-full text-sm font-semibold text-brand-slate hover:text-brand-navy hover:bg-slate-100 transition">Senior School</a>
+                    <a href="cocurricular.html" class="px-3 py-2 rounded-full text-sm font-semibold text-brand-slate hover:text-brand-navy hover:bg-slate-100 transition">Co-Curricular</a>
+                    <a href="facilities.html" class="px-3 py-2 rounded-full text-sm font-semibold text-brand-slate hover:text-brand-navy hover:bg-slate-100 transition">Facilities</a>
+                    <a href="contact_us.html" class="px-4 py-2 rounded-full text-sm font-bold bg-brand-navy text-white shadow-md shadow-brand-navy/20">Contact</a>
+                </nav>
+
+                <!-- Header Action -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="application.html" class="gold-badge-bg text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition duration-300 flex items-center gap-2">
+                        <i class="fas fa-paper-plane text-xs"></i>
+                        <span>Apply Now</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-toggle" aria-label="Open Navigation Menu" class="md:hidden p-2.5 rounded-xl text-brand-slate hover:bg-slate-100 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE DRAWER NAVIGATION -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <aside id="mobile-drawer" class="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-6 flex items-center justify-between border-b border-slate-100">
+            <img src="./media/schoollogo.png" 
+                 onerror="this.onerror=null; this.src='https://placehold.co/150x50/1a4b8c/ffffff?text=DVC+Logo';" 
+                 alt="Divine Visions Logo" 
+                 class="h-10 w-auto">
+            <button id="mobile-menu-close" aria-label="Close menu" class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center hover:bg-slate-200">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+        </div>
+        <nav class="p-6 flex-1 overflow-y-auto space-y-2">
+            <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-700 hover:bg-slate-50">
+                <i class="fas fa-home w-5 text-slate-400"></i> Home
+            </a>
+            <a href="preschool.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-700 hover:bg-slate-50">
+                <i class="fas fa-child w-5 text-slate-400"></i> Pre-School
+            </a>
+            <a href="junior.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-700 hover:bg-slate-50">
+                <i class="fas fa-school w-5 text-slate-400"></i> Junior School
+            </a>
+            <a href="senior.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-700 hover:bg-slate-50">
+                <i class="fas fa-graduation-cap w-5 text-slate-400"></i> Senior School
+            </a>
+            <a href="cocurricular.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-700 hover:bg-slate-50">
+                <i class="fas fa-running w-5 text-slate-400"></i> Co-Curricular
+            </a>
+            <a href="facilities.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-700 hover:bg-slate-50">
+                <i class="fas fa-building w-5 text-slate-400"></i> Facilities
+            </a>
+            <a href="contact_us.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-bold bg-brand-navy/10 text-brand-navy">
+                <i class="fas fa-envelope w-5 text-brand-navy"></i> Contact
+            </a>
+        </nav>
+        <div class="p-6 border-t border-slate-100 bg-slate-50">
+            <a href="application.html" class="w-full gold-badge-bg text-white font-bold py-3 rounded-xl shadow-lg flex items-center justify-center gap-2">
+                <i class="fas fa-file-signature"></i>
+                <span>Apply Online</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- HERO SECTION -->
+    <section class="relative hero-gradient text-white py-24 lg:py-36 overflow-hidden">
+        <!-- Ambient Glow Effects -->
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-brand-gold/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-brand-navyLight/30 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-6 text-brand-gold">
+                <i class="fas fa-comments text-brand-gold"></i> Get In Touch
+            </div>
+
+            <!-- Title -->
+            <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                Contact <span class="gold-gradient-text">Divine Visions College</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-lg sm:text-xl text-slate-200 max-w-2xl mx-auto font-normal leading-relaxed mb-10">
+                Weâ€™d love to hear from you. Reach out for admissions inquiries, general office support, or to schedule an in-person campus visit.
+            </p>
+
+            <!-- Dual CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contact-section" class="w-full sm:w-auto px-8 py-4 gold-badge-bg hover:brightness-110 text-white font-bold rounded-2xl shadow-xl transition duration-300 flex items-center justify-center gap-2">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Send Us a Message</span>
+                </a>
+                <a href="tel:+263775418874" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 text-white font-bold rounded-2xl transition duration-300 flex items-center justify-center gap-2">
+                    <i class="fas fa-phone-alt text-brand-gold"></i>
+                    <span>Call Admissions</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUICK CONTACT BENTO GRID -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 relative z-20">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Card 1: Location -->
+            <div class="bg-white rounded-3xl p-6 shadow-xl border border-slate-100 hover:shadow-card-hover transition duration-300 flex flex-col justify-between group">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-gold/15 text-brand-gold flex items-center justify-center text-xl font-bold group-hover:scale-110 transition">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-500">Campus</span>
+                </div>
+                <div>
+                    <h3 class="font-heading text-lg font-bold text-brand-slate mb-1">Our Location</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-3">Mashonaland West, Karoi Hindlane</p>
+                    <a href="https://maps.google.com/?q=Karoi+Hindlane+Zimbabwe" target="_blank" class="text-xs font-bold text-brand-navy hover:text-brand-gold transition flex items-center gap-1">
+                        <span>Get Directions</span> <i class="fas fa-arrow-right text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2: Phone -->
+            <div class="bg-white rounded-3xl p-6 shadow-xl border border-slate-100 hover:shadow-card-hover transition duration-300 flex flex-col justify-between group">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-brand-navy flex items-center justify-center text-xl font-bold group-hover:scale-110 transition">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-500">Direct Call</span>
+                </div>
+                <div>
+                    <h3 class="font-heading text-lg font-bold text-brand-slate mb-1">Phone Enquiries</h3>
+                    <div class="text-sm text-slate-600 space-y-1">
+                        <a href="tel:+2632642156390" class="block hover:text-brand-navy font-medium transition">0264 215 6390</a>
+                        <a href="tel:+263775418874" class="block hover:text-brand-navy font-semibold text-brand-slate transition">+263 775 418 874</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Email -->
+            <div class="bg-white rounded-3xl p-6 shadow-xl border border-slate-100 hover:shadow-card-hover transition duration-300 flex flex-col justify-between group">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl font-bold group-hover:scale-110 transition">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-500">24/7 Email</span>
+                </div>
+                <div>
+                    <h3 class="font-heading text-lg font-bold text-brand-slate mb-1">Email Address</h3>
+                    <a href="mailto:devinevisionscollegeit@gmail.com" class="text-xs sm:text-sm font-semibold text-brand-navy hover:text-brand-gold transition break-all block">
+                        devinevisionscollegeit@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 4: Hours -->
+            <div class="bg-white rounded-3xl p-6 shadow-xl border border-slate-100 hover:shadow-card-hover transition duration-300 flex flex-col justify-between group">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-bold group-hover:scale-110 transition">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 font-bold">Open</span>
+                </div>
+                <div>
+                    <h3 class="font-heading text-lg font-bold text-brand-slate mb-1">Office Hours</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Monday â€“ Friday<br>
+                        <span class="font-bold text-brand-slate">7:30 AM â€“ 4:30 PM</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTACT CONTENT (FORM & SIDEBAR INFO) -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-grow scroll-mt-24" id="contact-section">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+            <span class="text-xs font-extrabold uppercase tracking-widest text-brand-gold">We're Ready to Help</span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-slate mt-2">Send Us an Instant Message</h2>
+            <p class="text-slate-600 text-base mt-3 leading-relaxed">
+                Whether you have questions regarding entry requirements, school fees, or scheduling a visit, send your message below and our administration team will reply promptly.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            
+            <!-- FORM CONTAINER (7 COLUMNS) -->
+            <div class="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-100 relative">
+                
+                <!-- Success Alert Toast (Hidden by default) -->
+                <div id="form-success-banner" class="hidden mb-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm flex items-center gap-3">
+                    <i class="fas fa-check-circle text-emerald-600 text-xl flex-shrink-0"></i>
+                    <div>
+                        <div class="font-bold">Thank you for your message!</div>
+                        <div>Your inquiry has been received. Our team will contact you shortly.</div>
+                    </div>
+                </div>
+
+                <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Full Name -->
+                        <div>
+                            <label for="full-name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                                Full Name <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative rounded-xl border border-slate-200 bg-slate-50/50 form-input-focus transition">
+                                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                    <i class="fas fa-user text-sm"></i>
+                                </span>
+                                <input type="text" id="full-name" name="full-name" required placeholder="John Doe" 
+                                       class="w-full pl-10 pr-4 py-3 bg-transparent rounded-xl text-sm font-medium text-slate-800 focus:outline-none">
+                            </div>
+                        </div>
+
+                        <!-- Email Address -->
+                        <div>
+                            <label for="email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                                Email Address <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative rounded-xl border border-slate-200 bg-slate-50/50 form-input-focus transition">
+                                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                    <i class="fas fa-envelope text-sm"></i>
+                                </span>
+                                <input type="email" id="email" name="email" required placeholder="john@example.com" 
+                                       class="w-full pl-10 pr-4 py-3 bg-transparent rounded-xl text-sm font-medium text-slate-800 focus:outline-none">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Phone Number -->
+                        <div>
+                            <label for="phone" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                                Phone Number
+                            </label>
+                            <div class="relative rounded-xl border border-slate-200 bg-slate-50/50 form-input-focus transition">
+                                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                    <i class="fas fa-phone text-sm"></i>
+                                </span>
+                                <input type="tel" id="phone" name="phone" placeholder="+263 770 000 000" 
+                                       class="w-full pl-10 pr-4 py-3 bg-transparent rounded-xl text-sm font-medium text-slate-800 focus:outline-none">
+                            </div>
+                        </div>
+
+                        <!-- Enquiry Subject -->
+                        <div>
+                            <label for="subject" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                                Subject / Department
+                            </label>
+                            <div class="relative rounded-xl border border-slate-200 bg-slate-50/50 form-input-focus transition">
+                                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                    <i class="fas fa-tag text-sm"></i>
+                                </span>
+                                <select id="subject" name="subject" class="w-full pl-10 pr-4 py-3 bg-transparent rounded-xl text-sm font-medium text-slate-800 focus:outline-none appearance-none">
+                                    <option value="General Enquiry">General Enquiry</option>
+                                    <option value="Admissions">Admissions &amp; Registration</option>
+                                    <option value="Pre-School">Pre-School Department</option>
+                                    <option value="Junior School">Junior School Department</option>
+                                    <option value="Senior School">Senior School Department</option>
+                                    <option value="Fees & Finance">Fees &amp; Finance</option>
+                                </select>
+                                <span class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-slate-400">
+                                    <i class="fas fa-chevron-down text-xs"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Message Textarea -->
+                    <div>
+                        <label for="message" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                            Your Message <span class="text-red-500">*</span>
+                        </label>
+                        <div class="relative rounded-xl border border-slate-200 bg-slate-50/50 form-input-focus transition">
+                            <textarea id="message" name="message" required rows="5" placeholder="How can we help you today?" 
+                                      class="w-full p-4 bg-transparent rounded-xl text-sm font-medium text-slate-800 focus:outline-none resize-y"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="submitBtn" class="w-full sm:w-auto px-8 py-4 bg-brand-navy hover:bg-brand-navyDark text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group">
+                        <span>Submit Message</span>
+                        <i class="fas fa-paper-plane group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- SIDEBAR INFO CARD (5 COLUMNS) -->
+            <div class="lg:col-span-5 space-y-8">
+                
+                <!-- Quick WhatsApp Card -->
+                <div class="bg-gradient-to-br from-emerald-600 to-green-700 text-white rounded-3xl p-8 shadow-xl relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 text-emerald-500/20 text-9xl pointer-events-none">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-bold mb-4">
+                            <span class="w-2 h-2 rounded-full bg-green-300 animate-ping"></span>
+                            <span>Usually replies within 1 hour</span>
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold mb-2">Fast Direct Support</h3>
+                        <p class="text-emerald-100 text-sm leading-relaxed mb-6">
+                            Need immediate assistance? Chat directly with our school reception desk on WhatsApp for quick answers.
+                        </p>
+                        <a href="https://wa.me/263775418874" target="_blank" class="w-full bg-white text-emerald-800 hover:bg-emerald-50 font-bold py-3.5 px-6 rounded-2xl shadow-lg transition duration-300 flex items-center justify-center gap-3">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span>Chat on WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Department Contacts Breakdown -->
+                <div class="bg-white rounded-3xl p-8 shadow-xl border border-slate-100 space-y-6">
+                    <h3 class="font-heading text-xl font-bold text-brand-slate border-b border-slate-100 pb-4">
+                        Campus Offices
+                    </h3>
+
+                    <div class="space-y-4 text-sm">
+                        <!-- Item 1 -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-slate-100 text-brand-navy flex items-center justify-center text-base flex-shrink-0 font-bold">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-slate">Admissions Office</h4>
+                                <p class="text-xs text-slate-500">Student Enrollment &amp; Registration</p>
+                                <a href="tel:+263775418874" class="text-brand-navy font-semibold hover:underline mt-0.5 inline-block">+263 775 418 874</a>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-slate-100 text-brand-navy flex items-center justify-center text-base flex-shrink-0 font-bold">
+                                <i class="fas fa-building-columns"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-slate">General Administration</h4>
+                                <p class="text-xs text-slate-500">Campus Visiting &amp; Enquiries</p>
+                                <a href="tel:+2632642156390" class="text-brand-navy font-semibold hover:underline mt-0.5 inline-block">0264 215 6390</a>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-slate-100 text-brand-navy flex items-center justify-center text-base flex-shrink-0 font-bold">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-slate">IT &amp; Online Portal</h4>
+                                <p class="text-xs text-slate-500">Website &amp; E-Learning Desk</p>
+                                <a href="mailto:devinevisionscollegeit@gmail.com" class="text-brand-navy font-semibold hover:underline text-xs break-all mt-0.5 inline-block">devinevisionscollegeit@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- LOCATION MAP CARD -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-100 overflow-hidden relative">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <div class="space-y-4">
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-gold">Visit Our Campus</span>
+                    <h3 class="font-heading text-3xl font-bold text-brand-slate">Location &amp; Directions</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Divine Visions College is situated in Karoi Hindlane, Mashonaland West. Visitors are warmly welcomed during school administrative hours.
+                    </p>
+                    <div class="pt-2">
+                        <a href="https://maps.google.com/?q=Karoi+Hindlane+Zimbabwe" target="_blank" rel="noopener noreferrer" 
+                           class="gold-badge-bg text-white font-bold text-sm px-6 py-3.5 rounded-2xl shadow-lg hover:brightness-110 transition inline-flex items-center gap-2">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>Open in Google Maps</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Map Mockup Graphic Visual -->
+                <div class="lg:col-span-2 h-64 sm:h-80 rounded-2xl bg-slate-100 relative overflow-hidden border border-slate-200 flex items-center justify-center text-center p-6 group">
+                    <!-- Background Visual Graphic Pattern -->
+                    <div class="absolute inset-0 bg-[radial-gradient(#1a4b8c_1px,transparent_1px)] [background-size:16px_16px] opacity-20"></div>
+                    
+                    <div class="relative z-10 space-y-3">
+                        <div class="w-16 h-16 rounded-full bg-brand-navy text-brand-gold flex items-center justify-center text-2xl shadow-2xl mx-auto group-hover:scale-110 transition">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-slate-800 text-lg">Divine Visions College Campus</h4>
+                        <p class="text-xs text-slate-500 max-w-sm mx-auto">Mashonaland West, Karoi Hindlane, Zimbabwe</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-navy text-white pt-16 pb-8 border-t border-brand-navyDark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-white/10">
+                
+                <!-- Col 1 -->
+                <div>
+                    <img src="./media/schoollogo.png" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/200x70/ffffff/1a4b8c?text=Divine+Visions';" 
+                         alt="Divine Visions Logo" 
+                         class="h-14 w-auto mb-4 bg-white/10 p-2 rounded-xl">
+                    <h3 class="font-heading text-xl font-bold">Divine Visions College</h3>
+                    <p class="text-brand-gold italic font-medium mt-1">"The Light to the World"</p>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-heading text-lg font-bold mb-4 text-brand-gold">Our Schools</h4>
+                    <ul class="space-y-2.5 text-slate-300 text-sm">
+                        <li><a href="preschool.html" class="hover:text-brand-gold transition flex items-center gap-2"><i class="fas fa-angle-right text-brand-gold text-xs"></i> Pre-School</a></li>
+                        <li><a href="junior.html" class="hover:text-brand-gold transition flex items-center gap-2"><i class="fas fa-angle-right text-brand-gold text-xs"></i> Junior School</a></li>
+                        <li><a href="senior.html" class="hover:text-brand-gold transition flex items-center gap-2"><i class="fas fa-angle-right text-brand-gold text-xs"></i> Senior School</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-heading text-lg font-bold mb-4 text-brand-gold">Direct Contact</h4>
+                    <ul class="space-y-3 text-slate-300 text-sm">
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-phone text-brand-gold"></i>
+                            <a href="tel:+263775418874" class="hover:text-white transition">0264 215 6390 / +263 775 418 874</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-brand-gold"></i>
+                            <a href="mailto:devinevisionscollegeit@gmail.com" class="hover:text-white transition break-all">devinevisionscollegeit@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Credits & Copyright -->
+            <div class="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 gap-4 text-center md:text-left">
+                <p>Â© 2025 Divine Visions College. All Rights Reserved.</p>
+                <p>Website by <a href="mailto:nicolemusara@icloud.com" class="text-slate-300 hover:text-brand-gold underline">Nicole Musara</a> | <a href="tel:+263719328411" class="text-slate-300 hover:text-brand-gold">+263 71 932 8411</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING ACTIONS -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+        <!-- Application Button Pill -->
+        <a href="application.html" class="bg-brand-navy hover:bg-brand-navyDark text-white font-bold text-sm px-5 py-3 rounded-full shadow-2xl border border-white/20 flex items-center gap-2.5 transition-all duration-300 transform hover:scale-105">
+            <i class="fas fa-file-alt text-brand-gold text-base"></i>
+            <span class="hidden sm:inline">Apply Online</span>
+        </a>
+        
+        <!-- WhatsApp Floating Pulse Button -->
+        <a href="https://wa.me/263775418874" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp" class="w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center text-2xl shadow-2xl transition duration-300 pulse-whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle Logic
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+
+            function openMobileNav() {
+                mobileDrawer.classList.remove('translate-x-full');
+                mobileOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.classList.add('overflow-hidden');
+            }
+
+            function closeMobileNav() {
+                mobileDrawer.classList.add('translate-x-full');
+                mobileOverlay.classList.add('opacity-0', 'pointer-events-none');
+                document.body.classList.remove('overflow-hidden');
+            }
+
+            if(mobileMenuToggle) mobileMenuToggle.addEventListener('click', openMobileNav);
+            if(mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileNav);
+            if(mobileOverlay) mobileOverlay.addEventListener('click', closeMobileNav);
+        });
+
+        // Form Submit Simulation Logic
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            const successBanner = document.getElementById('form-success-banner');
+
+            // Button Loading State
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending...`;
+
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<span>Submit Message</span><i class="fas fa-paper-plane"></i>`;
+                
+                // Reveal Toast
+                if(successBanner) {
+                    successBanner.classList.remove('hidden');
+                    successBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+                
+                // Reset form
+                document.getElementById('contactForm').reset();
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

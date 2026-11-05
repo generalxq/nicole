@@ -1,0 +1,631 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Facilities - Divine Visions College</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome CDN (Fixes missing icon issue) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <style>
+    :root {
+      --primary-navy: #1a4b8c;
+      --primary-dark: #0f2e58;
+      --accent-gold: #d4af37;
+      --gold-light: #f9a826;
+      --bg-dark: #0b1526;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      --radius-lg: 20px;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+      --shadow-hover: 0 20px 40px rgba(26, 75, 140, 0.15);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 700; }
+
+    /* ===== NAVIGATION HEADER ===== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      transition: var(--transition);
+    }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+    
+    .logo { display: flex; align-items: center; }
+    .logo img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.3s;
+    }
+    .logo:hover img { transform: scale(1.05); }
+
+    .desktop-nav ul { display: flex; align-items: center; list-style: none; gap: 4px; }
+    .desktop-nav a {
+      color: #0f172a;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 8px 12px;
+      border-radius: 9999px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .desktop-nav a:hover { color: var(--primary-navy); background: #f1f5f9; }
+    .desktop-nav a.active {
+      color: #ffffff;
+      background: var(--primary-navy);
+      font-weight: 700;
+      box-shadow: 0 4px 8px rgba(26, 75, 140, 0.2);
+    }
+
+    .header-buttons { display: none; }
+    .header-apply-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, var(--accent-gold), #b89428);
+      color: white;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .header-apply-button:hover { filter: brightness(1.1); box-shadow: var(--shadow-hover); }
+
+    .mobile-nav-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1500;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-nav-overlay.is-active { opacity: 1; pointer-events: auto; }
+
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      width: 320px;
+      max-width: 85vw;
+      height: 100vh;
+      padding: 0;
+      background: white;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+      transition: var(--transition);
+    }
+    .mobile-drawer.is-open { right: 0; }
+    .mobile-nav-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .mobile-nav-logo img { display: block; height: 40px; width: auto; }
+    .mobile-menu-close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 50%;
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .mobile-drawer ul { flex: 1; overflow-y: auto; list-style: none; padding: 24px; }
+    .mobile-drawer ul li { margin-bottom: 8px; }
+    .mobile-drawer ul li a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      color: #334155;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .mobile-drawer ul li a i { width: 20px; color: #94a3b8; }
+    .mobile-drawer ul li a:hover { background: #f8fafc; }
+    .mobile-drawer ul li a.active { background: rgba(26, 75, 140, 0.1); color: var(--primary-navy); font-weight: 700; }
+    .mobile-drawer ul li a.active i { color: var(--primary-navy); }
+    .mobile-drawer-footer { padding: 24px; border-top: 1px solid #f1f5f9; background: #f8fafc; }
+    .mobile-drawer-footer .header-apply-button { justify-content: center; width: 100%; padding: 12px; }
+
+    .mobile-menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border: 0;
+      border-radius: 12px;
+      background: transparent;
+      color: #0f172a;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero-section {
+      position: relative;
+      background: linear-gradient(135deg, rgba(15, 46, 88, 0.85) 0%, rgba(11, 21, 38, 0.95) 100%),
+                  url('./media/building1.jpg') center/cover no-repeat;
+      color: white; padding: 140px 0 100px; min-height: 80vh; display: flex; align-items: center;
+    }
+
+    .hero-content { max-width: 850px; margin: 0 auto; text-align: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 18px;
+      background: rgba(212, 175, 55, 0.15); border: 1px solid var(--accent-gold); border-radius: 50px;
+      color: var(--accent-gold); font-size: 0.9rem; font-weight: 600; margin-bottom: 24px;
+    }
+    .hero-content h1 { font-size: 3.6rem; line-height: 1.15; margin-bottom: 20px; }
+    .hero-content p { font-size: 1.25rem; color: #cbd5e1; margin-bottom: 36px; line-height: 1.7; }
+
+    /* ===== STATS BADGES BAR ===== */
+    .stats-bar { margin-top: -40px; position: relative; z-index: 10; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .stat-card {
+      background: white; padding: 24px; border-radius: var(--radius-lg);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06); display: flex; align-items: center; gap: 18px;
+    }
+    .stat-icon {
+      width: 54px; height: 54px; border-radius: 14px; background: rgba(26, 75, 140, 0.08);
+      color: var(--primary-navy); display: flex; align-items: center; justify-content: center; font-size: 22px;
+    }
+    .stat-info h3 { font-size: 1.5rem; color: var(--primary-dark); }
+    .stat-info p { font-size: 0.88rem; color: var(--text-muted); }
+
+    /* ===== SECTIONS GENERAL ===== */
+    .section { padding: 90px 0; }
+    .section-title { text-align: center; max-width: 680px; margin: 0 auto 50px; }
+    .section-title span { color: var(--accent-gold); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; display: block; margin-bottom: 8px; }
+    .section-title h2 { font-size: 2.5rem; color: var(--primary-dark); margin-bottom: 12px; }
+    .section-title p { color: var(--text-muted); }
+
+    /* ===== FACILITIES SHOWCASE GRID ===== */
+    .facilities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    .facility-card {
+      background: white; border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: var(--shadow-sm); transition: var(--transition); border: 1px solid rgba(0,0,0,0.04);
+      display: flex; flex-direction: column;
+    }
+    .facility-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+    .facility-image { height: 230px; overflow: hidden; position: relative; }
+    .facility-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .facility-card:hover .facility-image img { transform: scale(1.06); }
+    
+    .facility-content { padding: 28px; display: flex; flex-direction: column; flex-grow: 1; }
+    .facility-icon {
+      width: 50px; height: 50px; background: rgba(26, 75, 140, 0.08);
+      color: var(--primary-navy); border-radius: 14px; display: flex;
+      align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px;
+    }
+    .facility-content h3 { font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 10px; }
+    .facility-content p { color: var(--text-muted); font-size: 0.98rem; line-height: 1.6; }
+
+    /* ===== TRANSPORTATION SECTION ===== */
+    .subjects-bg { background: #f1f5f9; }
+    .transport-card {
+      background: white; border-radius: 24px; padding: 50px;
+      box-shadow: var(--shadow-sm); border: 1px solid rgba(0,0,0,0.04);
+    }
+    .transport-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .transport-info h2 { font-size: 2.3rem; color: var(--primary-dark); margin-bottom: 16px; }
+    .transport-info p { color: #475569; font-size: 1.05rem; line-height: 1.7; margin-bottom: 30px; }
+    
+    .transport-features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .transport-feature-item {
+      display: flex; align-items: flex-start; gap: 14px; background: #f8fafc;
+      padding: 18px; border-radius: 14px; border: 1px solid #e2e8f0;
+    }
+    .transport-feature-item i {
+      font-size: 20px; color: var(--accent-gold); margin-top: 2px;
+    }
+    .transport-feature-item h4 { font-size: 1.05rem; color: var(--primary-dark); margin-bottom: 4px; }
+    .transport-feature-item p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+
+    .image-wrapper { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-hover); }
+    .image-wrapper img { width: 100%; height: 420px; object-fit: cover; display: block; }
+
+    /* ===== BENTO GRID ADDITIONAL FEATURES ===== */
+    .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .bento-card {
+      background: white; padding: 32px; border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm); transition: var(--transition); border: 1px solid rgba(0,0,0,0.03);
+    }
+    .bento-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+    .bento-card-icon {
+      width: 52px; height: 52px; border-radius: 14px; background: rgba(26, 75, 140, 0.08);
+      color: var(--primary-navy); display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 20px;
+    }
+    .bento-card h4 { font-size: 1.25rem; color: var(--primary-dark); margin-bottom: 8px; }
+    .bento-card p { color: var(--text-muted); font-size: 0.94rem; line-height: 1.6; }
+
+    /* ===== FOOTER ===== */
+    footer { background: var(--bg-dark); color: white; padding: 70px 0 30px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+    .footer-container { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr; gap: 40px; margin-bottom: 50px; }
+    .footer-column h3 { font-size: 1.4rem; color: white; margin-bottom: 20px; }
+    .footer-column p, .footer-column ul li a { color: #94a3b8; text-decoration: none; }
+    .footer-column ul { list-style: none; }
+    .footer-column ul li { margin-bottom: 10px; }
+
+    .developer-credit, .copyright { text-align: center; color: #64748b; font-size: 0.9rem; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+    .developer-credit a { color: var(--accent-gold); text-decoration: none; }
+
+    /* ===== FLOATING ACTION BUTTONS ===== */
+    .floating-actions { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 14px; z-index: 999; }
+    .whatsapp-floating {
+      width: 56px; height: 56px; background-color: #25d366; color: white; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 28px; text-decoration: none;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    }
+    .application-btn-floating {
+      display: flex; align-items: center; gap: 8px; padding: 12px 22px; background: var(--primary-navy);
+      color: white; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.92rem;
+    }
+
+    @media (max-width: 767px) {
+      .desktop-nav { display: none; }
+      .mobile-menu-toggle { display: flex; }
+    }
+    @media (min-width: 1024px) {
+      .header-buttons { display: flex; align-items: center; }
+    }
+    @media (max-width: 992px) {
+      .transport-grid { grid-template-columns: 1fr; gap: 30px; }
+      .bento-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-container { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .bento-grid { grid-template-columns: 1fr; }
+      .transport-features-grid { grid-template-columns: 1fr; }
+      .transport-card { padding: 30px; }
+      .hero-content h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION HEADER ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="./media/schoollogo.png" alt="Devine Visions Logo">
+      </a>
+
+      <nav class="site-nav desktop-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="preschool.html">Pre-School</a></li>
+          <li><a href="junior.html">Junior School</a></li>
+          <li><a href="senior.html">Senior School</a></li>
+          <li><a href="cocurricular.html">Co-Curricular</a></li>
+          <li><a href="facilities.html" class="active">Facilities</a></li>
+          <li><a href="contact_us.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-buttons">
+        <a href="application.html" class="header-apply-button">
+          <i class="fas fa-paper-plane"></i>
+          <span>Apply Now</span>
+        </a>
+      </div>
+
+      <button class="mobile-menu-toggle" aria-label="Open Navigation Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Sidebar Navigation Drawer -->
+  <nav class="site-nav mobile-drawer" aria-label="Mobile navigation">
+    <div class="mobile-nav-header">
+      <a href="index.html" class="mobile-nav-logo">
+        <img src="./media/schoollogo.png" alt="Devine Visions Logo">
+      </a>
+      <button class="mobile-menu-close" aria-label="Close menu"><i class="fas fa-times"></i></button>
+    </div>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+      <li><a href="preschool.html"><i class="fas fa-child"></i>Pre-School</a></li>
+      <li><a href="junior.html"><i class="fas fa-school"></i>Junior School</a></li>
+      <li><a href="senior.html"><i class="fas fa-graduation-cap"></i>Senior School</a></li>
+      <li><a href="cocurricular.html"><i class="fas fa-running"></i>Co-Curricular</a></li>
+      <li><a href="facilities.html" class="active"><i class="fas fa-building"></i>Facilities</a></li>
+      <li><a href="contact_us.html"><i class="fas fa-envelope"></i>Contact</a></li>
+    </ul>
+    <div class="mobile-drawer-footer">
+      <a href="application.html" class="header-apply-button">
+        <i class="fas fa-file-signature"></i>
+        <span>Apply Online</span>
+      </a>
+    </div>
+  </nav>
+  <div class="mobile-nav-overlay"></div>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-building"></i> World-Class Infrastructure</div>
+        <h1>Our Facilities</h1>
+        <p>Experience our modern, well-equipped learning environment designed to inspire academic excellence, creativity, and personal development.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-flask"></i></div>
+          <div class="stat-info"><h3>Equipped</h3><p>Science Laboratories</p></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-wifi"></i></div>
+          <div class="stat-info"><h3>High-Speed</h3><p>Digital E-Learning</p></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-bus"></i></div>
+          <div class="stat-info"><h3>Safe</h3><p>School Transportation</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN FACILITIES GRID -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <span>Campus Infrastructure</span>
+        <h2>World-Class Learning Environment</h2>
+        <p>Providing state-of-the-art facilities that create the optimal space for academic and personal success.</p>
+      </div>
+
+      <div class="facilities-grid">
+        <!-- Classrooms -->
+        <div class="facility-card">
+          <div class="facility-image">
+            <img src="./media/building1.jpg" alt="Modern Classrooms">
+          </div>
+          <div class="facility-content">
+            <div class="facility-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+            <h3>Modern Classrooms</h3>
+            <p>Spacious, well-ventilated classrooms equipped with modern teaching aids and comfortable learning environments.</p>
+          </div>
+        </div>
+
+        <!-- Science Labs -->
+        <div class="facility-card">
+          <div class="facility-image">
+            <img src="./media/building2.jpg" alt="Science Laboratories">
+          </div>
+          <div class="facility-content">
+            <div class="facility-icon"><i class="fas fa-flask"></i></div>
+            <h3>Science Laboratories</h3>
+            <p>Fully-equipped laboratories for physics, chemistry, and biology with latest equipment for practical learning.</p>
+          </div>
+        </div>
+
+        <!-- Library -->
+        <div class="facility-card">
+          <div class="facility-image">
+            <img src="./media/building3.jpg" alt="Library Resource Center">
+          </div>
+          <div class="facility-content">
+            <div class="facility-icon"><i class="fas fa-book-reader"></i></div>
+            <h3>Library Resource Center</h3>
+            <p>Extensive collection of books, digital resources, and quiet study areas for research and focused reading.</p>
+          </div>
+        </div>
+
+        <!-- Sports Infrastructure -->
+        <div class="facility-card">
+          <div class="facility-image">
+            <img src="./media/building4.jpg" alt="Sports Facilities">
+          </div>
+          <div class="facility-content">
+            <div class="facility-icon"><i class="fas fa-running"></i></div>
+            <h3>Sports Facilities</h3>
+            <p>Comprehensive sports infrastructure including playing fields, courts, and equipment for various athletic activities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPORTATION SECTION -->
+  <section class="section subjects-bg">
+    <div class="container">
+      <div class="transport-card">
+        <div class="transport-grid">
+          <div class="transport-info">
+            <h2>Safe &amp; Reliable Transportation</h2>
+            <p>Our fleet of modern school buses ensures safe and comfortable transportation for all students, operating with experienced drivers and strict safety protocols.</p>
+
+            <div class="transport-features-grid">
+              <div class="transport-feature-item">
+                <i class="fas fa-shield-alt"></i>
+                <div>
+                  <h4>Safety First</h4>
+                  <p>Regular maintenance &amp; safety checks</p>
+                </div>
+              </div>
+
+              <div class="transport-feature-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                  <h4>Punctual Service</h4>
+                  <p>Reliable pick-up &amp; drop-off schedules</p>
+                </div>
+              </div>
+
+              <div class="transport-feature-item">
+                <i class="fas fa-user-shield"></i>
+                <div>
+                  <h4>Trained Staff</h4>
+                  <p>Experienced drivers &amp; attendants</p>
+                </div>
+              </div>
+
+              <div class="transport-feature-item">
+                <i class="fas fa-route"></i>
+                <div>
+                  <h4>Convenient Routes</h4>
+                  <p>Well-planned coverage across key zones</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="image-wrapper">
+            <img src="./media/buses.JPG" alt="School Transportation Fleet">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDITIONAL CAMPUS FEATURES BENTO GRID -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <span>Campus Amenities</span>
+        <h2>Additional Campus Features</h2>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-card">
+          <div class="bento-card-icon"><i class="fas fa-wifi"></i></div>
+          <h4>Technology Integration</h4>
+          <p>High-speed internet and digital learning tools available across our entire learning campus.</p>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-card-icon"><i class="fas fa-utensils"></i></div>
+          <h4>Dining Facilities</h4>
+          <p>Clean, hygienic dining areas serving freshly prepared, highly nutritious meals daily.</p>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-card-icon"><i class="fas fa-heartbeat"></i></div>
+          <h4>Health &amp; Wellness</h4>
+          <p>Dedicated medical room with trained healthcare staff for student well-being and first aid.</p>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-card-icon"><i class="fas fa-seedling"></i></div>
+          <h4>Green Spaces</h4>
+          <p>Beautiful landscaped gardens and peaceful outdoor areas for student relaxation and nature study.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>Divine Visions College</h3>
+          <p>The Light to the World. Nurturing academic leaders, discipline, and moral character through modern education.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Our Schools</h3>
+          <ul>
+            <li><a href="preschool.html">Pre-School</a></li>
+            <li><a href="junior.html">Junior School</a></li>
+            <li><a href="senior.html">Senior School</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <p><a href="tel:+263775418874" style="color:#94a3b8; text-decoration:none;">0264 215 6390 / +263 775 418 874</a></p>
+          <p><a href="mailto:devinevisionscollegeit@gmail.com" style="color:#94a3b8; text-decoration:none;">devinevisionscollegeit@gmail.com</a></p>
+        </div>
+      </div>
+
+      <div class="developer-credit">
+        <p>Website by <a href="mailto:nicolemusara@icloud.com">Nicole Musara</a> | <a href="tel:+263719328411">+263 71 932 8411</a></p>
+      </div>
+      <div class="copyright">
+        <p>Â© 2025 Divine Visions College. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING ACTIONS -->
+  <div class="floating-actions">
+    <a href="https://wa.me/263775418874" target="_blank" class="whatsapp-floating" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="application.html" class="application-btn-floating">
+      <i class="fas fa-file-alt"></i>
+      <span>Apply Online</span>
+    </a>
+  </div>
+
+  <!-- SCRIPT FOR MOBILE DRAWER -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileToggle = document.querySelector('.mobile-menu-toggle');
+      const mobileDrawer = document.querySelector('.mobile-drawer');
+      const mobileClose = document.querySelector('.mobile-menu-close');
+      const overlay = document.querySelector('.mobile-nav-overlay');
+
+      if (!mobileToggle || !mobileDrawer || !overlay) return;
+
+      const links = mobileDrawer.querySelectorAll('a');
+      const openNav = () => {
+        mobileDrawer.classList.add('is-open');
+        overlay.classList.add('is-active');
+        document.body.classList.add('overflow-hidden');
+      };
+      const closeNav = () => {
+        mobileDrawer.classList.remove('is-open');
+        overlay.classList.remove('is-active');
+        document.body.classList.remove('overflow-hidden');
+      };
+
+      mobileToggle.addEventListener('click', openNav);
+      if (mobileClose) mobileClose.addEventListener('click', closeNav);
+      overlay.addEventListener('click', closeNav);
+      links.forEach(link => link.addEventListener('click', closeNav));
+    });
+  </script>
+</body>
+</html>

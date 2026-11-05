@@ -1,0 +1,996 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co-Curricular Activities - Divine Visions College</title>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#1a4b8c',
+                            navyDark: '#0f315d',
+                            navyLight: '#2563eb',
+                            gold: '#d4af37',
+                            goldHover: '#b89428',
+                            goldLight: '#fef3c7',
+                            slate: '#0f172a',
+                            muted: '#475569',
+                            bgLight: '#f8fafc',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.08)',
+                        'card-hover': '0 20px 35px -10px rgba(26, 75, 140, 0.15)',
+                        'glow': '0 0 25px rgba(212, 175, 55, 0.35)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Modern Glassmorphism & Custom Polish */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(15, 49, 93, 0.93) 0%, rgba(26, 75, 140, 0.85) 60%, rgba(15, 23, 42, 0.95) 100%), 
+                        url('./media/a8.jpg') center/cover no-repeat;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fef08a 0%, #d4af37 50%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-badge-bg {
+            background: linear-gradient(135deg, #d4af37 0%, #b89428 100%);
+        }
+
+        /* Smooth Tab Filter Transitions */
+        .activity-category {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .activity-category.hidden-category {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .activity-category.visible-category {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Image Vignette Shadow Overlay */
+        .card-img-vignette::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.1) 60%, transparent 100%);
+        }
+
+        /* Pulse Animation for Floating WhatsApp */
+        @keyframes subtle-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 14px rgba(34, 197, 94, 0); }
+        }
+        
+        .pulse-whatsapp {
+            animation: subtle-pulse 2.5s infinite;
+        }
+    </style>
+</head>
+<body class="bg-brand-bgLight font-sans text-brand-muted antialiased selection:bg-brand-gold selection:text-white flex flex-col min-h-screen">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <img src="./media/schoollogo.png" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/180x60/1a4b8c/ffffff?text=Divine+Visions+College';" 
+                         alt="Divine Visions Logo" 
+                         class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+                    <a href="index.html" class="px-3 py-2 rounded-full text-sm font-semibold text-brand-slate hover:text-brand-navy hover:bg-slate-100 transition">Home</a>
+                    <a href="preschool.html" class="px-3 py-2 rounded-full text-sm font-semibold text-brand-slate hover:text-brand-navy hover:bg-slate-100 transition">Pre-School</a>
+                    <a href="junior.html" class="px-3 py-2 rounded-full text-sm font-semibold text-brand-slate hover:text-brand-navy hover:bg-slate-100 transition">Junior School</a>
+                    <a href="senior.html" class="px-3 py-2 rounded-full text-sm font-semibold text-brand-slate hover:text-brand-navy hover:bg-slate-100 transition">Senior School</a>
+                    <a href="cocurricular.html" class="px-4 py-2 rounded-full text-sm font-bold bg-brand-navy text-white shadow-md shadow-brand-navy/20">Co-Curricular</a>
+                    <a href="facilities.html" class="px-3 py-2 rounded-full text-sm font-semibold text-brand-slate hover:text-brand-navy hover:bg-slate-100 transition">Facilities</a>
+                    <a href="contact_us.html" class="px-3 py-2 rounded-full text-sm font-semibold text-brand-slate hover:text-brand-navy hover:bg-slate-100 transition">Contact</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="application.html" class="gold-badge-bg text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-md hover:shadow-lg hover:brightness-110 transition duration-300 flex items-center gap-2">
+                        <i class="fas fa-paper-plane text-xs"></i>
+                        <span>Apply Now</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-toggle" aria-label="Open Navigation Menu" class="md:hidden p-2.5 rounded-xl text-brand-slate hover:bg-slate-100 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE DRAWER NAVIGATION -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <aside id="mobile-drawer" class="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-6 flex items-center justify-between border-b border-slate-100">
+            <img src="./media/schoollogo.png" 
+                 onerror="this.onerror=null; this.src='https://placehold.co/150x50/1a4b8c/ffffff?text=DVC+Logo';" 
+                 alt="Divine Visions Logo" 
+                 class="h-10 w-auto">
+            <button id="mobile-menu-close" aria-label="Close menu" class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center hover:bg-slate-200">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+        </div>
+        <nav class="p-6 flex-1 overflow-y-auto space-y-2">
+            <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-700 hover:bg-slate-50">
+                <i class="fas fa-home w-5 text-slate-400"></i> Home
+            </a>
+            <a href="preschool.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-700 hover:bg-slate-50">
+                <i class="fas fa-child w-5 text-slate-400"></i> Pre-School
+            </a>
+            <a href="junior.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-700 hover:bg-slate-50">
+                <i class="fas fa-school w-5 text-slate-400"></i> Junior School
+            </a>
+            <a href="senior.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-700 hover:bg-slate-50">
+                <i class="fas fa-graduation-cap w-5 text-slate-400"></i> Senior School
+            </a>
+            <a href="cocurricular.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-bold bg-brand-navy/10 text-brand-navy">
+                <i class="fas fa-running w-5 text-brand-navy"></i> Co-Curricular
+            </a>
+            <a href="facilities.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-700 hover:bg-slate-50">
+                <i class="fas fa-building w-5 text-slate-400"></i> Facilities
+            </a>
+            <a href="contact_us.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-slate-700 hover:bg-slate-50">
+                <i class="fas fa-envelope w-5 text-slate-400"></i> Contact
+            </a>
+        </nav>
+        <div class="p-6 border-t border-slate-100 bg-slate-50">
+            <a href="application.html" class="w-full gold-badge-bg text-white font-bold py-3 rounded-xl shadow-lg flex items-center justify-center gap-2">
+                <i class="fas fa-file-signature"></i>
+                <span>Apply Online</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- HERO SECTION -->
+    <section class="relative hero-gradient text-white py-24 lg:py-36 overflow-hidden">
+        <!-- Ambient Glow Effects -->
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-brand-gold/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-brand-navyLight/30 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-6 text-brand-gold">
+                <i class="fas fa-star text-brand-gold"></i> Excellence Beyond Classrooms
+            </div>
+
+            <!-- Title -->
+            <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                Co-Curricular <span class="gold-gradient-text">Activities</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-lg sm:text-xl text-slate-200 max-w-3xl mx-auto font-normal leading-relaxed mb-10">
+                Where talents bloom and passions ignite. Discover our enriched pathways across Agriculture, Science, Sports, Strategic Chess, and Craftsmanship.
+            </p>
+
+            <!-- Quick Highlight Badges -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-4 text-left">
+                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4 rounded-2xl flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-gold/20 flex items-center justify-center text-brand-gold font-bold">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-300 font-medium">Competitions</div>
+                        <div class="text-sm font-bold text-white">Award Winning</div>
+                    </div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4 rounded-2xl flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-gold/20 flex items-center justify-center text-brand-gold font-bold">
+                        <i class="fas fa-users-gear"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-300 font-medium">Mentorship</div>
+                        <div class="text-sm font-bold text-white">Expert Coaches</div>
+                    </div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4 rounded-2xl flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-gold/20 flex items-center justify-center text-brand-gold font-bold">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-300 font-medium">Hands-On</div>
+                        <div class="text-sm font-bold text-white">Practical Learning</div>
+                    </div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4 rounded-2xl flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-gold/20 flex items-center justify-center text-brand-gold font-bold">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-300 font-medium">Growth</div>
+                        <div class="text-sm font-bold text-white">Holistic Culture</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS / BENTO SUMMARY BAR -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
+        <div class="bg-white rounded-3xl shadow-xl border border-slate-100 p-6 md:p-8 grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                <div class="font-heading text-3xl lg:text-4xl font-extrabold text-brand-navy">5+</div>
+                <div class="text-xs sm:text-sm font-medium text-slate-600 mt-1">Specialized Disciplines</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                <div class="font-heading text-3xl lg:text-4xl font-extrabold text-brand-navy">100%</div>
+                <div class="text-xs sm:text-sm font-medium text-slate-600 mt-1">Student Engagement</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                <div class="font-heading text-3xl lg:text-4xl font-extrabold text-brand-navy">15+</div>
+                <div class="text-xs sm:text-sm font-medium text-slate-600 mt-1">Annual Tournaments &amp; Fairs</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                <div class="font-heading text-3xl lg:text-4xl font-extrabold text-brand-navy">Modern</div>
+                <div class="text-xs sm:text-sm font-medium text-slate-600 mt-1">Labs &amp; Workshops</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORY FILTER TABS (STICKY) -->
+    <section class="sticky top-20 z-40 bg-brand-bgLight/90 backdrop-blur-md py-6 border-b border-slate-200/60 my-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-start md:justify-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="filter-pills">
+                <button data-filter="all" class="filter-btn px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 bg-brand-navy text-white shadow-md">
+                    <i class="fas fa-th-large mr-1.5"></i> All Programs
+                </button>
+                <button data-filter="agriculture" class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                    <i class="fas fa-seedling mr-1.5 text-green-600"></i> Agriculture
+                </button>
+                <button data-filter="science" class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                    <i class="fas fa-flask mr-1.5 text-blue-600"></i> Science &amp; Labs
+                </button>
+                <button data-filter="sports" class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                    <i class="fas fa-futbol mr-1.5 text-amber-600"></i> Sports &amp; Athletics
+                </button>
+                <button data-filter="chess" class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                    <i class="fas fa-chess-king mr-1.5 text-purple-600"></i> Chess &amp; Strategy
+                </button>
+                <button data-filter="woodwork" class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                    <i class="fas fa-hammer mr-1.5 text-amber-800"></i> Woodwork &amp; Craft
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN SHOWCASE CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-20 flex-grow">
+
+        <!-- 1. AGRICULTURE SECTION -->
+        <section id="category-agriculture" class="activity-category visible-category scroll-mt-36">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-slate-200 gap-4">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-brand-gold">Practical Learning</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-slate mt-1">Agricultural Science</h2>
+                </div>
+                <p class="text-slate-600 max-w-xl text-sm sm:text-base leading-relaxed">
+                    Hands-on farming experience and modern agricultural science that connects students with sustainability, eco-practices, and modern food technology.
+                </p>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <!-- Card 1 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-card-hover transition-all duration-300 border border-slate-100 flex flex-col">
+                    <div class="relative h-72 overflow-hidden bg-slate-100 card-img-vignette">
+                        <img src="./media/a6.jpeg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x600/1a4b8c/ffffff?text=School+Farm+Projects';" 
+                             alt="School Farm" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 z-10 px-3 py-1 bg-white/90 backdrop-blur-md text-brand-navy font-bold text-xs rounded-full shadow">
+                            Field Work
+                        </span>
+                        <div class="absolute bottom-4 left-4 z-10 text-white font-heading font-bold text-xl">
+                            School Farm Projects
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center text-xl mb-5 shadow-sm">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-brand-slate mb-3">School Farming</h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                Practical agricultural training with our dedicated school farm, teaching crop cultivation, soil health, and animal husbandry.
+                            </p>
+                            <ul class="space-y-2.5 text-sm text-slate-700 mb-6">
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Crop cultivation &amp; rotation techniques</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Organic vegetable gardening</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Poultry farming management</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Modern irrigation systems</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Annual harvest celebration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-card-hover transition-all duration-300 border border-slate-100 flex flex-col">
+                    <div class="relative h-72 overflow-hidden bg-slate-100 card-img-vignette">
+                        <img src="./media/a2.jpeg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x600/1a4b8c/ffffff?text=Greenhouse+Technology';" 
+                             alt="Greenhouse" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 z-10 px-3 py-1 bg-white/90 backdrop-blur-md text-brand-navy font-bold text-xs rounded-full shadow">
+                            Innovation
+                        </span>
+                        <div class="absolute bottom-4 left-4 z-10 text-white font-heading font-bold text-xl">
+                            Greenhouse Technology
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl mb-5 shadow-sm">
+                                <i class="fas fa-tractor"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-brand-slate mb-3">Modern Agriculture</h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                Learning contemporary farming methods including smart greenhouse technology, conservation, and agritech.
+                            </p>
+                            <ul class="space-y-2.5 text-sm text-slate-700 mb-6">
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Climate-controlled greenhouse management</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Sustainable organic techniques</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Soil analysis &amp; conservation</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Agricultural business &amp; economics</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Commercial farm excursions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Gallery Preview -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="h-48 rounded-2xl overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition group">
+                    <img src="./media/a1.jpeg" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a4b8c/ffffff?text=Agriculture+Gallery+1';" 
+                         alt="Agriculture Activity 1" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="h-48 rounded-2xl overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition group">
+                    <img src="./media/a3.jpeg" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a4b8c/ffffff?text=Agriculture+Gallery+2';" 
+                         alt="Agriculture Activity 2" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. SCIENCE SECTION -->
+        <section id="category-science" class="activity-category visible-category scroll-mt-36">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-slate-200 gap-4">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-brand-gold">STEM &amp; Discovery</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-slate mt-1">Science &amp; Innovation</h2>
+                </div>
+                <p class="text-slate-600 max-w-xl text-sm sm:text-base leading-relaxed">
+                    Interactive scientific exploration through state-of-the-art laboratories and practical experiments designed to foster natural curiosity.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <!-- Card 1 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-card-hover transition-all duration-300 border border-slate-100 flex flex-col">
+                    <div class="relative h-72 overflow-hidden bg-slate-100 card-img-vignette">
+                        <img src="./media/a16.jpeg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x600/1a4b8c/ffffff?text=Science+Lab';" 
+                             alt="Science Lab" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 z-10 px-3 py-1 bg-white/90 backdrop-blur-md text-brand-navy font-bold text-xs rounded-full shadow">
+                            Laboratory
+                        </span>
+                        <div class="absolute bottom-4 left-4 z-10 text-white font-heading font-bold text-xl">
+                            Laboratory Experiments
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-5 shadow-sm">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-brand-slate mb-3">Science Laboratory</h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                Explore chemistry, physics, and biology principles through rigorous hands-on experiments in our modern laboratories.
+                            </p>
+                            <ul class="space-y-2.5 text-sm text-slate-700 mb-6">
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Advanced chemical analysis &amp; testing</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Experimental physics modules</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Biological &amp; microscopic studies</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> International safety protocol training</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Annual Science Fair exhibitions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-card-hover transition-all duration-300 border border-slate-100 flex flex-col">
+                    <div class="relative h-72 overflow-hidden bg-slate-100 card-img-vignette">
+                        <img src="./media/a10.jpeg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x600/1a4b8c/ffffff?text=Practical+Science';" 
+                             alt="Science Practical" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 z-10 px-3 py-1 bg-white/90 backdrop-blur-md text-brand-navy font-bold text-xs rounded-full shadow">
+                            Research
+                        </span>
+                        <div class="absolute bottom-4 left-4 z-10 text-white font-heading font-bold text-xl">
+                            Practical Science
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-cyan-50 text-cyan-600 flex items-center justify-center text-xl mb-5 shadow-sm">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-brand-slate mb-3">Research &amp; Discovery</h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                Develop critical analytical thinking through independent research projects, data gathering, and inventive experiments.
+                            </p>
+                            <ul class="space-y-2.5 text-sm text-slate-700 mb-6">
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Scientific research methodology</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Empirical data gathering &amp; interpretation</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Scientific report writing &amp; presentation</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Student innovation challenges</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Inter-school Olympiad competitions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Preview -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="h-48 rounded-2xl overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition group">
+                    <img src="./media/a11.jpeg" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a4b8c/ffffff?text=Science+Gallery+1';" 
+                         alt="Science Activity 1" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="h-48 rounded-2xl overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition group">
+                    <img src="./media/a17.jpeg" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a4b8c/ffffff?text=Science+Gallery+2';" 
+                         alt="Science Activity 2" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SPORTS SECTION -->
+        <section id="category-sports" class="activity-category visible-category scroll-mt-36">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-slate-200 gap-4">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-brand-gold">Fitness &amp; Teamwork</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-slate mt-1">Sports &amp; Athletics</h2>
+                </div>
+                <p class="text-slate-600 max-w-xl text-sm sm:text-base leading-relaxed">
+                    Developing physical health, teamwork, resilience, and true sportsmanship through comprehensive athletic and field programs.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <!-- Card 1 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-card-hover transition-all duration-300 border border-slate-100 flex flex-col">
+                    <div class="relative h-72 overflow-hidden bg-slate-100 card-img-vignette">
+                        <img src="./media/a5.jpeg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x600/1a4b8c/ffffff?text=Team+Sports';" 
+                             alt="Soccer" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 z-10 px-3 py-1 bg-white/90 backdrop-blur-md text-brand-navy font-bold text-xs rounded-full shadow">
+                            Team Dynamics
+                        </span>
+                        <div class="absolute bottom-4 left-4 z-10 text-white font-heading font-bold text-xl">
+                            Team Sports
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl mb-5 shadow-sm">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-brand-slate mb-3">Team Sports</h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                Foster collaboration, strategic coordination, and discipline across soccer, basketball, netball, and volleyball teams.
+                            </p>
+                            <ul class="space-y-2.5 text-sm text-slate-700 mb-6">
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Inter-school soccer tournaments</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Basketball leagues &amp; coaching</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Netball competitions</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Volleyball training matches</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Regional sports fixtures</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-card-hover transition-all duration-300 border border-slate-100 flex flex-col">
+                    <div class="relative h-72 overflow-hidden bg-slate-100 card-img-vignette">
+                        <img src="./media/a7.jpeg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x600/1a4b8c/ffffff?text=Individual+Athletics';" 
+                             alt="Athletics" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 z-10 px-3 py-1 bg-white/90 backdrop-blur-md text-brand-navy font-bold text-xs rounded-full shadow">
+                            Track &amp; Field
+                        </span>
+                        <div class="absolute bottom-4 left-4 z-10 text-white font-heading font-bold text-xl">
+                            Individual Athletics
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center text-xl mb-5 shadow-sm">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-brand-slate mb-3">Athletics</h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                Cultivate individual determination and peak physical conditioning in track, field events, tennis, and swimming.
+                            </p>
+                            <ul class="space-y-2.5 text-sm text-slate-700 mb-6">
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Track &amp; field discipline training</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Swimming technique &amp; galas</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Lawn tennis coaching</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Annual Inter-house Sports Day</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Athletic scholarship preparation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Preview -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="h-48 rounded-2xl overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition group">
+                    <img src="./media/sports1.jpg" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a4b8c/ffffff?text=Sports+Gallery+1';" 
+                         alt="Sports Activity 1" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="h-48 rounded-2xl overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition group">
+                    <img src="./media/sports2.jpg" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a4b8c/ffffff?text=Sports+Gallery+2';" 
+                         alt="Sports Activity 2" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CHESS SECTION -->
+        <section id="category-chess" class="activity-category visible-category scroll-mt-36">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-slate-200 gap-4">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-brand-gold">Mind Mastery</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-slate mt-1">Chess &amp; Strategic Gaming</h2>
+                </div>
+                <p class="text-slate-600 max-w-xl text-sm sm:text-base leading-relaxed">
+                    Mastering foresight, critical analysis, tactics, and patience through structured chess training and competition.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <!-- Card 1 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-card-hover transition-all duration-300 border border-slate-100 flex flex-col">
+                    <div class="relative h-72 overflow-hidden bg-slate-100 card-img-vignette">
+                        <img src="./media/chess1.jpg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x600/1a4b8c/ffffff?text=Chess+Club';" 
+                             alt="Chess Club" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 z-10 px-3 py-1 bg-white/90 backdrop-blur-md text-brand-navy font-bold text-xs rounded-full shadow">
+                            Strategy
+                        </span>
+                        <div class="absolute bottom-4 left-4 z-10 text-white font-heading font-bold text-xl">
+                            Strategic Thinking
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl mb-5 shadow-sm">
+                                <i class="fas fa-chess"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-brand-slate mb-3">Chess Club</h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                Master the game of kings while refining strategic planning, focus, spatial awareness, and cognitive patience.
+                            </p>
+                            <ul class="space-y-2.5 text-sm text-slate-700 mb-6">
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Beginner to grandmaster preparation</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Tactical puzzle solving workshops</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Opening &amp; endgame strategy sessions</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Inter-school matches</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Chess history &amp; game analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-card-hover transition-all duration-300 border border-slate-100 flex flex-col">
+                    <div class="relative h-72 overflow-hidden bg-slate-100 card-img-vignette">
+                        <img src="./media/chess3.jpg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x600/1a4b8c/ffffff?text=Competitive+Chess';" 
+                             alt="Chess Tournament" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 z-10 px-3 py-1 bg-white/90 backdrop-blur-md text-brand-navy font-bold text-xs rounded-full shadow">
+                            Tournaments
+                        </span>
+                        <div class="absolute bottom-4 left-4 z-10 text-white font-heading font-bold text-xl">
+                            Competitive Play
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl mb-5 shadow-sm">
+                                <i class="fas fa-chess-king"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-brand-slate mb-3">Competitive Chess</h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                Compete in rated regional and national tournaments, representing Divine Visions College with distinction.
+                            </p>
+                            <ul class="space-y-2.5 text-sm text-slate-700 mb-6">
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Official rated tournament participation</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> National chess rating development</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> School team championship leagues</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Masterclass guest sessions</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> National qualifier pathways</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Preview -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="h-48 rounded-2xl overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition group">
+                    <img src="./media/a15.jpeg" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a4b8c/ffffff?text=Chess+Gallery+1';" 
+                         alt="Chess Activity 1" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="h-48 rounded-2xl overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition group">
+                    <img src="./media/a14.jpeg" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a4b8c/ffffff?text=Chess+Gallery+2';" 
+                         alt="Chess Activity 2" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. WOODWORK SECTION -->
+        <section id="category-woodwork" class="activity-category visible-category scroll-mt-36">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-slate-200 gap-4">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-brand-gold">Craftsmanship &amp; Design</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-brand-slate mt-1">Woodwork &amp; Design Craft</h2>
+                </div>
+                <p class="text-slate-600 max-w-xl text-sm sm:text-base leading-relaxed">
+                    Building practical technical skill, creative design, and precision craftsmanship in our equipped workshops.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <!-- Card 1 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-card-hover transition-all duration-300 border border-slate-100 flex flex-col">
+                    <div class="relative h-72 overflow-hidden bg-slate-100 card-img-vignette">
+                        <img src="./media/a12.jpeg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x600/1a4b8c/ffffff?text=Woodwork+Shop';" 
+                             alt="Woodwork Shop" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 z-10 px-3 py-1 bg-white/90 backdrop-blur-md text-brand-navy font-bold text-xs rounded-full shadow">
+                            Technical Skills
+                        </span>
+                        <div class="absolute bottom-4 left-4 z-10 text-white font-heading font-bold text-xl">
+                            Practical Workshop
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl mb-5 shadow-sm">
+                                <i class="fas fa-hammer"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-brand-slate mb-3">Woodwork Studio</h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                Learn traditional joinery alongside modern woodworking machinery protocols safely under expert guidance.
+                            </p>
+                            <ul class="space-y-2.5 text-sm text-slate-700 mb-6">
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Tool operation &amp; workshop safety</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Furniture design &amp; creation</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Precision wood carving techniques</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Traditional mortise &amp; tenon joinery</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Blueprint planning &amp; measurement</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-card-hover transition-all duration-300 border border-slate-100 flex flex-col">
+                    <div class="relative h-72 overflow-hidden bg-slate-100 card-img-vignette">
+                        <img src="./media/a13.jpeg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x600/1a4b8c/ffffff?text=Creative+Projects';" 
+                             alt="Woodwork Projects" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 z-10 px-3 py-1 bg-white/90 backdrop-blur-md text-brand-navy font-bold text-xs rounded-full shadow">
+                            Artisan
+                        </span>
+                        <div class="absolute bottom-4 left-4 z-10 text-white font-heading font-bold text-xl">
+                            Creative Fabrication
+                        </div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-orange-100 text-orange-800 flex items-center justify-center text-xl mb-5 shadow-sm">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3 class="font-heading text-2xl font-bold text-brand-slate mb-3">Creative Projects</h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                Craft beautiful, functional timber products while developing entrepreneurial mindset and practical life skills.
+                            </p>
+                            <ul class="space-y-2.5 text-sm text-slate-700 mb-6">
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Product design &amp; prototyping</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Organic wood finishing &amp; polishing</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Customized personal timber projects</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Annual student Craft Exhibition</li>
+                                <li class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-gold"></i> Technical entrepreneurship basics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Preview -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="h-48 rounded-2xl overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition group">
+                    <img src="./media/a13.jpeg" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a4b8c/ffffff?text=Woodwork+Gallery+1';" 
+                         alt="Woodwork Activity 1" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="h-48 rounded-2xl overflow-hidden bg-slate-100 shadow-sm hover:shadow-md transition group">
+                    <img src="./media/a12.jpeg" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a4b8c/ffffff?text=Woodwork+Gallery+2';" 
+                         alt="Woodwork Activity 2" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- HIGHLIGHTS / WHY CHOOSE US -->
+    <section class="bg-slate-900 text-white py-20 relative overflow-hidden mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-gold">Built For Character</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold mt-2">Why Our Co-Curricular Program Leads</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Highlight 1 -->
+                <div class="bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition duration-300">
+                    <div class="w-14 h-14 rounded-2xl gold-badge-bg flex items-center justify-center text-white text-2xl mb-6 shadow-lg">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold mb-3 text-white">Proven Achievements</h3>
+                    <p class="text-slate-300 leading-relaxed text-sm">
+                        Multiple awards and trophies in regional inter-school sports leagues, chess tournaments, and national science fairs.
+                    </p>
+                </div>
+
+                <!-- Highlight 2 -->
+                <div class="bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition duration-300">
+                    <div class="w-14 h-14 rounded-2xl gold-badge-bg flex items-center justify-center text-white text-2xl mb-6 shadow-lg">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold mb-3 text-white">Expert Mentorship</h3>
+                    <p class="text-slate-300 leading-relaxed text-sm">
+                        Dedicated coaches, certified instructors, and passionate subject specialists focused on identifying and nurturing each child's natural gift.
+                    </p>
+                </div>
+
+                <!-- Highlight 3 -->
+                <div class="bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition duration-300">
+                    <div class="w-14 h-14 rounded-2xl gold-badge-bg flex items-center justify-center text-white text-2xl mb-6 shadow-lg">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold mb-3 text-white">Holistic Skill Building</h3>
+                    <p class="text-slate-300 leading-relaxed text-sm">
+                        Combining academic rigor with hands-on vocational skills, athletic vigor, and social leadership to prepare students for real-world success.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION SECTION -->
+    <section class="py-20 bg-gradient-to-r from-amber-500 via-brand-gold to-amber-600 text-slate-900 relative">
+        <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
+            <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">Ready to Join Our Vibrant Clubs?</h2>
+            <p class="text-lg sm:text-xl font-medium max-w-2xl mx-auto mb-10 text-slate-900/90 leading-relaxed">
+                Discover your potential beyond the classroom. Get in touch with our admissions team or enroll directly into Divine Visions College today!
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="mailto:devinevisionscollegeit@gmail.com" class="w-full sm:w-auto px-8 py-4 bg-brand-navy hover:bg-brand-navyDark text-white font-bold rounded-2xl shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                    <i class="fas fa-envelope"></i>
+                    <span>Get Involved Today</span>
+                </a>
+                <a href="application.html" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-slate-50 text-brand-navy font-bold rounded-2xl shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Submit Application</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-navy text-white pt-16 pb-8 border-t border-brand-navyDark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-white/10">
+                
+                <!-- Col 1 -->
+                <div>
+                    <img src="./media/schoollogo.png" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/200x70/ffffff/1a4b8c?text=Divine+Visions';" 
+                         alt="Divine Visions Logo" 
+                         class="h-14 w-auto mb-4 bg-white/10 p-2 rounded-xl">
+                    <h3 class="font-heading text-xl font-bold">Divine Visions College</h3>
+                    <p class="text-brand-gold italic font-medium mt-1">"The Light to the World"</p>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-heading text-lg font-bold mb-4 text-brand-gold">Our Schools</h4>
+                    <ul class="space-y-2.5 text-slate-300 text-sm">
+                        <li><a href="preschool.html" class="hover:text-brand-gold transition flex items-center gap-2"><i class="fas fa-angle-right text-brand-gold text-xs"></i> Pre-School</a></li>
+                        <li><a href="junior.html" class="hover:text-brand-gold transition flex items-center gap-2"><i class="fas fa-angle-right text-brand-gold text-xs"></i> Junior School</a></li>
+                        <li><a href="senior.html" class="hover:text-brand-gold transition flex items-center gap-2"><i class="fas fa-angle-right text-brand-gold text-xs"></i> Senior School</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-heading text-lg font-bold mb-4 text-brand-gold">Direct Contact</h4>
+                    <ul class="space-y-3 text-slate-300 text-sm">
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-phone text-brand-gold"></i>
+                            <a href="tel:+263775418874" class="hover:text-white transition">0264 215 6390 / +263 775 418 874</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-brand-gold"></i>
+                            <a href="mailto:devinevisionscollegeit@gmail.com" class="hover:text-white transition break-all">devinevisionscollegeit@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Credits & Copyright -->
+            <div class="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 gap-4 text-center md:text-left">
+                <p>Â© 2025 Divine Visions College. All Rights Reserved.</p>
+                <p>Website by <a href="mailto:nicolemusara@icloud.com" class="text-slate-300 hover:text-brand-gold underline">Nicole Musara</a> | <a href="tel:+263719328411" class="text-slate-300 hover:text-brand-gold">+263 71 932 8411</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING ACTIONS -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+        <!-- Application Button Pill -->
+        <a href="application.html" class="bg-brand-navy hover:bg-brand-navyDark text-white font-bold text-sm px-5 py-3 rounded-full shadow-2xl border border-white/20 flex items-center gap-2.5 transition-all duration-300 transform hover:scale-105">
+            <i class="fas fa-file-alt text-brand-gold text-base"></i>
+            <span class="hidden sm:inline">Apply Online</span>
+        </a>
+        
+        <!-- WhatsApp Floating Pulse Button -->
+        <a href="https://wa.me/263775418874" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp" class="w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center text-2xl shadow-2xl transition duration-300 pulse-whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle Logic
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+
+            function openMobileNav() {
+                mobileDrawer.classList.remove('translate-x-full');
+                mobileOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.classList.add('overflow-hidden');
+            }
+
+            function closeMobileNav() {
+                mobileDrawer.classList.add('translate-x-full');
+                mobileOverlay.classList.add('opacity-0', 'pointer-events-none');
+                document.body.classList.remove('overflow-hidden');
+            }
+
+            if(mobileMenuToggle) mobileMenuToggle.addEventListener('click', openMobileNav);
+            if(mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileNav);
+            if(mobileOverlay) mobileOverlay.addEventListener('click', closeMobileNav);
+
+            // Category Tab Filter Logic
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const categories = document.querySelectorAll('.activity-category');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filter = btn.getAttribute('data-filter');
+
+                    // Reset active button state
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-brand-navy', 'text-white', 'shadow-md');
+                        b.classList.add('bg-white', 'text-slate-600', 'hover:bg-slate-100', 'border', 'border-slate-200');
+                    });
+
+                    // Highlight current button
+                    btn.classList.remove('bg-white', 'text-slate-600', 'hover:bg-slate-100', 'border', 'border-slate-200');
+                    btn.classList.add('bg-brand-navy', 'text-white', 'shadow-md');
+
+                    // Show/Hide section categories smoothly
+                    categories.forEach(cat => {
+                        if (filter === 'all') {
+                            cat.classList.remove('hidden-category');
+                            cat.classList.add('visible-category');
+                        } else {
+                            if (cat.id === `category-${filter}`) {
+                                cat.classList.remove('hidden-category');
+                                cat.classList.add('visible-category');
+                            } else {
+                                cat.classList.remove('visible-category');
+                                cat.classList.add('hidden-category');
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

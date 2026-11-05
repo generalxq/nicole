@@ -1,0 +1,50 @@
+console.log("Devine Visions website loaded");
+
+// ===== Slideshow =====
+let slideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+
+function showSlides() {
+  slides.forEach((slide) => slide.classList.remove('active'));
+  slideIndex++;
+  if (slideIndex > slides.length) { slideIndex = 1; }
+  slides[slideIndex - 1].classList.add('active');
+  setTimeout(showSlides, 4000); // Change image every 4 seconds
+}
+
+// Run slideshow after page loads
+document.addEventListener('DOMContentLoaded', showSlides);
+
+// ===== Heading Animation =====
+document.addEventListener("DOMContentLoaded", function() {
+  const heading = document.getElementById('animated-heading');
+  if (!heading) return; // skip if heading not present
+
+  const text = heading.textContent;
+  heading.textContent = ''; // clear original text
+
+  text.split('').forEach((char, i) => {
+    const span = document.createElement('span');
+    span.textContent = char === ' ' ? '\u00A0' : char;
+    span.style.opacity = 0;
+    span.style.transition = `opacity 0.3s ease ${i*0.05}s, transform 0.3s ease ${i*0.05}s`;
+    span.style.transform = 'translateY(20px)';
+    span.style.display = 'inline-block';
+    heading.appendChild(span);
+  });
+
+  // Animate when heading is in viewport
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        heading.querySelectorAll('span').forEach(span => {
+          span.style.opacity = 1;
+          span.style.transform = 'translateY(0)';
+        });
+        observer.unobserve(heading);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(heading);
+});

@@ -1,0 +1,392 @@
+// Mobile Menu Toggle with Animation
+const mobileMenu = document.querySelector('.mobile-menu');
+const nav = document.querySelector('nav ul');
+
+if (mobileMenu && nav) {
+    mobileMenu.addEventListener('click', () => {
+        nav.classList.toggle('show');
+        mobileMenu.style.transform = nav.classList.contains('show') ? 'rotate(90deg)' : 'rotate(0deg)';
+        mobileMenu.textContent = nav.classList.contains('show') ? '✕' : '☰';
+    });
+}
+
+// Close mobile menu when clicking on a link
+const navLinks = document.querySelectorAll('nav ul li a');
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        if (nav.classList.contains('show')) {
+            // Add click animation
+            link.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                link.style.transform = 'scale(1)';
+            }, 150);
+            
+            setTimeout(() => {
+                nav.classList.remove('show');
+                mobileMenu.textContent = '☰';
+                mobileMenu.style.transform = 'rotate(0deg)';
+            }, 300);
+        }
+    });
+});
+
+// Smooth scrolling for anchor links with offset
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const offset = 80; // Adjust for fixed header
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Active navigation highlighting with smooth transition
+const sections = document.querySelectorAll('section[id]');
+const navItems = document.querySelectorAll('nav ul li a');
+
+function highlightNav() {
+    let currentSectionId = '';
+    const scrollPosition = window.scrollY + 100;
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (scrollPosition >= sectionTop) {
+            currentSectionId = section.getAttribute('id');
+        }
+    });
+
+    navItems.forEach(item => {
+        const itemHref = item.getAttribute('href');
+
+        // Always keep the main page link active
+        if (itemHref === 'junior.html') {
+            item.classList.add('active');
+            return; // Skip the rest of the logic for this item
+        }
+
+        // For anchor links on the same page
+        if (itemHref.startsWith('#')) {
+            if (itemHref === `#${currentSectionId}`) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        } else {
+            // For links to other pages
+            item.classList.remove('active');
+        }
+    });
+}
+
+// Add CSS for nav pulse animation
+const navStyle = document.createElement('style');
+navStyle.textContent = `
+    @keyframes pulseNav {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+`;
+document.head.appendChild(navStyle);
+
+window.addEventListener('scroll', highlightNav);
+
+// Scroll-triggered animations for sections
+const animatedSections = document.querySelectorAll('.section');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            
+            // Stagger animations for elements within the section
+            const contentElements = entry.target.querySelectorAll('.content-text, .content-image, .program-card, .feature-item');
+            contentElements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
+                
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, 100);
+            });
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+animatedSections.forEach(section => {
+    sectionObserver.observe(section);
+});
+
+// Enhanced program card interactions
+const programCards = document.querySelectorAll('.program-card');
+
+programCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-15px) scale(1.02)';
+        const content = card.querySelector('.program-content h3');
+        if (content) {
+            content.style.color = 'var(--primary)';
+        }
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) scale(1)';
+        const content = card.querySelector('.program-content h3');
+        if (content) {
+            content.style.color = '';
+        }
+    });
+});
+
+// Feature item hover effects with JavaScript enhancement
+const featureItems = document.querySelectorAll('.feature-item');
+
+featureItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        const icon = item.querySelector('.feature-icon');
+        if (icon) {
+            icon.style.transform = 'scale(1.3) rotate(10deg)';
+        }
+    });
+    
+    item.addEventListener('mouseleave', () => {
+        const icon = item.querySelector('.feature-icon');
+        if (icon) {
+            icon.style.transform = 'scale(1) rotate(0deg)';
+        }
+    });
+});
+
+// Button ripple effect
+const buttons = document.querySelectorAll('.btn');
+
+buttons.forEach(button => {
+    button.addEventListener('click', function(e) {
+        // Remove existing ripples
+        const existingRipples = this.querySelectorAll('.ripple');
+        existingRipples.forEach(ripple => ripple.remove());
+        
+        // Create new ripple
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple');
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
+    });
+});
+
+// Add CSS for ripple effect
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `
+    .btn {
+        position: relative;
+        overflow: hidden;
+    }
+    .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        transform: scale(0);
+        animation: ripple-animation 0.6s linear;
+        pointer-events: none;
+    }
+    @keyframes ripple-animation {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(rippleStyle);
+
+// Image lazy loading with fade-in effect
+const images = document.querySelectorAll('img');
+const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.style.opacity = '0';
+            img.style.transform = 'scale(1.1)';
+            img.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            
+            // Ensure image is loaded before animating
+            if (img.complete) {
+                animateImage(img);
+            } else {
+                img.addEventListener('load', () => animateImage(img));
+            }
+            
+            imageObserver.unobserve(img);
+        }
+    });
+}, {
+    threshold: 0.1
+});
+
+function animateImage(img) {
+    setTimeout(() => {
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1)';
+    }, 200);
+}
+
+images.forEach(img => {
+    // Add loading state
+    if (!img.complete) {
+        img.style.opacity = '0';
+    }
+    imageObserver.observe(img);
+});
+
+// Page load animations
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+    
+    // Animate hero content with staggered effect
+    const heroContent = document.querySelector('.page-hero .container');
+    if (heroContent) {
+        const heroElements = heroContent.children;
+        
+        Array.from(heroElements).forEach((element, index) => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = `opacity 0.8s ease ${index * 0.2}s, transform 0.8s ease ${index * 0.2}s`;
+        });
+        
+        setTimeout(() => {
+            Array.from(heroElements).forEach((element, index) => {
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        }, 500);
+    }
+    
+    // Add loading completion class
+    setTimeout(() => {
+        document.body.classList.add('page-loaded');
+    }, 1000);
+});
+
+// Parallax effect for hero section
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.page-hero');
+    if (hero) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+});
+
+// Counter animation for statistics (if you add stats later)
+function animateCounter(element, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(start);
+        }
+    }, 16);
+}
+
+// Handle responsive behavior with smooth transitions
+function handleResize() {
+    if (window.innerWidth > 768) {
+        if (nav.classList.contains('show')) {
+            nav.classList.remove('show');
+            mobileMenu.textContent = '☰';
+            mobileMenu.style.transform = 'rotate(0deg)';
+        }
+    }
+}
+
+window.addEventListener('resize', handleResize);
+
+// Add keyboard navigation support
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('show')) {
+        nav.classList.remove('show');
+        mobileMenu.textContent = '☰';
+        mobileMenu.style.transform = 'rotate(0deg)';
+    }
+});
+
+// Enhanced hover effects for footer links
+const footerLinks = document.querySelectorAll('footer a');
+footerLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+        link.style.transform = 'translateX(5px)';
+    });
+    
+    link.addEventListener('mouseleave', () => {
+        link.style.transform = 'translateX(0)';
+    });
+});
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Divine Visions Junior School page loaded with enhanced interactions');
+    
+    // Initialize highlight on load
+    highlightNav();
+    
+    // Add loaded class for CSS transitions
+    setTimeout(() => {
+        document.body.classList.add('dom-loaded');
+    }, 100);
+});
+
+// Performance optimization: Throttle scroll events
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+    if (!scrollTimeout) {
+        scrollTimeout = setTimeout(() => {
+            highlightNav();
+            scrollTimeout = null;
+        }, 10);
+    }
+});
+
+// Add page transition effects
+const allLinks = document.querySelectorAll('a[href]');
+allLinks.forEach(link => {
+    if (link.hostname === window.location.hostname) {
+        link.addEventListener('click', (e) => {
+            if (link.getAttribute('href').startsWith('#')) return;
+            
+            e.preventDefault();
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                window.location.href = link.href;
+            }, 300);
+        });
+    }
+});
